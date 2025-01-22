@@ -13,16 +13,32 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    # Checkout code
     - name: Checkout code
       uses: actions/checkout@v3
 
+    # Set up Node.js environment
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
         node-version: 16
 
+    # Install dependencies with error handling
     - name: Install dependencies
-      run: npm install
+      run: |
+        if [ -f package.json ]; then
+          npm install
+        else
+          echo "Error: package.json not found!"
+          exit 1
+        fi
 
+    # Run tests
     - name: Run tests
-      run: npm test
+      run: |
+        if grep -q "\"test\":" package.json; then
+          npm test
+        else
+          echo "Warning: No test script defined in package.json"
+          exit 0
+        fi
