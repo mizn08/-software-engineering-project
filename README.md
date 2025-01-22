@@ -11,9 +11,9 @@ The **PBT e-Reporting System** is a digital platform designed to streamline and 
 - Automated notifications and updates.
 
 ## Tools and Technologies Used
-- **Programming Language:** Python
-- **Web Framework:** Django / Flask (Specify your choice)
-- **Frontend:** HTML, CSS, JavaScript (Framework: React / Vue.js if applicable)
+- **Programming Language:** PHP
+- **Web Framework:** Bootstrap
+- **Frontend:** HTML, CSS, JavaScript 
 - **Database:** MySQL / PostgreSQL
 - **Version Control:** Git and GitHub
 - **Development Environment:** Visual Studio Code
@@ -22,7 +22,7 @@ The **PBT e-Reporting System** is a digital platform designed to streamline and 
 Follow these steps to set up and run the PBT e-Reporting System on your local machine:
 
 ### Prerequisites
-1. Install Python (version 3.x or higher).
+1. Install Vs Code
 2. Install Git on your computer.
 3. Clone the repository from GitHub.
 
