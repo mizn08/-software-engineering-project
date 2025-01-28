@@ -23,7 +23,7 @@ jobs:
 
     # Log in to Docker Hub securely
     - name: Log in to Docker Hub
-      run: echo "${{ secrets.Ahmad05@ }}" | docker login -u "${{ secrets.hamizan.ali@s.unikl.edu.my }}" --password-stdin
+      run: echo "${{ secrets.Ahmadmohdali }}" | docker login -u "${{ secrets.mizn08 }}" --password-stdin
       shell: bash
 
     # Build and push Docker image
