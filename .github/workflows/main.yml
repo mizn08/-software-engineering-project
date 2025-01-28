@@ -18,7 +18,7 @@ jobs:
 
     - name: Log in to Docker Hub
       run: |
-        echo "${{ secrets.Ahmadmohdali }}" | docker login -u "${{ secrets.hamizan.al@s.unikl.edu.my }}" --password-stdin
+        echo "${{ secrets.Ahmadmohdali }}" | docker login -u "${{ secrets.hamizan.ali@s.unikl.edu.my }}" --password-stdin
 
     - name: Build and Push Docker Image
       run: |
