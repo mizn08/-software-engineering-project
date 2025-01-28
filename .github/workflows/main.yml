@@ -39,5 +39,5 @@ jobs:
       run: |
         docker build -t my-html-app .
         docker tag my-html-app mizn08/my-html-app:latest
-        docker push mizn08/my-html-app:latest
+        docker pull mizn08/software-engineering-project.git
       shell: bash
