@@ -17,19 +17,33 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Set up Docker
+    # Verify Docker Installation
     - name: Verify Docker Installation
       run: docker --version
 
-    # Log in to Docker Hub securely
-    - name: Log in to Docker Hub
-      run: echo "${{ secrets.mizn08 }}" | docker login -u "${{ secrets.Ahmadmohdali }}" --password-stdin
+    # Debug: Check if Secrets are Passed Correctly
+    - name: Check Secrets
+      env:
+        USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      run: |
+        if [ -z "$USERNAME" ]; then echo "❌ DOCKER_USERNAME is missing!"; exit 1; fi
+        if [ -z "$PASSWORD" ]; then echo "❌ DOCKER_PASSWORD is missing!"; exit 1; fi
+        echo "✅ Secrets are set correctly."
       shell: bash
 
-    # Build and push Docker image
+    # Log in to Docker Hub Securely
+    - name: Log in to Docker Hub
+      env:
+        DOCKER_USERNAME: ${{ secrets.mizn08 }}
+        DOCKER_PASSWORD: ${{ secrets.Ahmadmohdali }}
+      run: echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
+      shell: bash
+
+    # Build and Push Docker Image
     - name: Build and Push Docker Image
       run: |
         docker build -t my-html-app .
         docker tag my-html-app hamizan.ali/my-html-app:latest
         docker push hamizan.ali/my-html-app:latest
-      shell: pwsh
+      shell: bash
