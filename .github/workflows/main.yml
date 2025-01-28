@@ -13,31 +13,14 @@ jobs:
     runs-on: windows-latest  # Use Windows runner
 
     steps:
-    # Checkout code
     - name: Checkout code
       uses: actions/checkout@v3
 
-    # Verify Docker Installation
-    - name: Verify Docker Installation
-      run: docker --version
-
-    # Debug: Check if Secrets are Passed Correctly
-    - name: Check Secrets
-      run: |
-        if [ -z "${{ secrets.DOCKER_USERNAME }}" ]; then echo "❌ DOCKER_USERNAME is missing!"; exit 1; fi
-        if [ -z "${{ secrets.DOCKER_PASSWORD }}" ]; then echo "❌ DOCKER_PASSWORD is missing!"; exit 1; fi
-        echo "✅ Secrets are set correctly."
-      shell: bash
-
-    # Log in to Docker Hub Securely
     - name: Log in to Docker Hub
-      run: echo "${{ secrets.Ahmadmohdali }}" | docker login -u "${{ secrets.mizn08 }}" --password-stdin
-      shell: bash
+      run: |
+        echo "${{ secrets.Ahmadmohdali }}" | docker login -u "${{ secrets.hamizan.al@s.unikl.edu.my }}" --password-stdin
 
-    # Build and Push Docker Image
     - name: Build and Push Docker Image
       run: |
-        docker build -t my-html-app .
-        docker tag my-html-app mizn08/my-html-app:latest
+        docker build -t mizn08/my-html-app .
         docker push mizn08/my-html-app:latest
-      shell: bash
