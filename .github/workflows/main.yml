@@ -23,18 +23,15 @@ jobs:
 
     # Debug: Check if Secrets are Passed Correctly
     - name: Check Secrets
-      env:
-        USERNAME: ${{ secrets.mizn08 }}
-        PASSWORD: ${{ secrets.Ahmadmohdali }}
       run: |
-        if [ -z "$mizn08" ]; then echo "❌ mizn08 is missing!"; exit 1; fi
-        if [ -z "$Ahmadmohdali" ]; then echo "❌ Ahmadmohdali is missing!"; exit 1; fi
+        if [ -z "${{ secrets.DOCKER_USERNAME }}" ]; then echo "❌ DOCKER_USERNAME is missing!"; exit 1; fi
+        if [ -z "${{ secrets.DOCKER_PASSWORD }}" ]; then echo "❌ DOCKER_PASSWORD is missing!"; exit 1; fi
         echo "✅ Secrets are set correctly."
       shell: bash
 
     # Log in to Docker Hub Securely
     - name: Log in to Docker Hub
-      run: echo "${{ secrets.Ahmadmohdali }}" | docker login -u "${{ secrets.mizan08 }}" --password-stdin
+      run: echo "${{ secrets.Ahmadmohdali }}" | docker login -u "${{ secrets.mizn08 }}" --password-stdin
       shell: bash
 
     # Build and Push Docker Image
