@@ -35,9 +35,8 @@ jobs:
       shell: bash
 
     # Build and Push Docker Image
-    - name: Build and Push Docker Image
-      run: |
-        docker build -t my-html-app .
+    - name: Build Docker image
+      run: docker build -t my-html-app ./subfolder
         docker tag my-html-app mizn08/my-html-app:latest
-        docker pull mizn08/software-engineering-project.git
+        docker pull mizn08/software-engineering-project:latest
       shell: bash
