@@ -1,4 +1,4 @@
-name: Node.js CI
+name: PBT e-Reporting System CI
 
 on:
   push:
@@ -10,19 +10,21 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest  # Use Windows runner
 
     steps:
     - name: Checkout code
       uses: actions/checkout@v3
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
       with:
-        node-version: 16
+        fetch-depth: 0  # Ensure full repo is fetched
 
-    - name: Install dependencies
-      run: npm install
+    - name: Verify Files
+      run: ls -al  # Debug: Check if package.json is in the repo
 
-    - name: Run tests
-      run: npm test
+    - name: Log in to Docker Hub
+      run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+    - name: Build and Push Docker Image
+      run: |
+        docker build -t mizn08/my-html-app .
+        docker push mizn08/my-html-app:latest
