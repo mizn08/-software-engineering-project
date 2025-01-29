@@ -14,7 +14,7 @@ The **PBT e-Reporting System** is a digital platform designed to streamline and 
 - **Programming Language:** PHP(future enhancement)
 - **Web Framework:** Bootstrap
 - **Frontend:** HTML, CSS, JavaScript 
-- **Database:** MySQL / PostgreSQL
+- **Database:** MySQL / PostgreSql
 - **Version Control:** Git and GitHub
 - **Development Environment:** Visual Studio Code
 
