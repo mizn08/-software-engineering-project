@@ -11,7 +11,7 @@ The **PBT e-Reporting System** is a digital platform designed to streamline and 
 - Automated notifications and updates.
 
 ## Tools and Technologies Used
-- **Programming Language:** PHP 
+- **Programming Language:** PHP
 - **Web Framework:** Bootstrap
 - **Frontend:** HTML, CSS, JavaScript 
 - **Database:** MySQL / PostgreSQL
